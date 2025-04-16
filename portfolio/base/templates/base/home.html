@@ -1,10 +1,27 @@
+<!-- filepath: c:\Users\nisch\OneDrive\Desktop\DJPROJECTS\PORTFOLIO\portfolio\base\templates\base\home.html -->
 {% extends 'base/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container mx-auto flex justify-center">
-        <img src="{% static 'base/images/guts.webp' %}" alt="">
-    </div>
-    <div class="container mx-auto flex justify-center">
-        <p>This guy is guts from berserk btw</p>
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
+        <!-- Card 1 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="{% static 'base/images/guts.webp' %}"
+                 alt="Guts"
+                 class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-2">Guts</h2>
+                <p class="text-gray-600">This guy is Guts from Berserk btw.</p>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img src="{% static 'base/images/nisch.jpg' %}"
+                 alt="Sample 2"
+                 class="w-full h-48 object-cover">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-2">Nischal CHaudhary</h2>
+                <p class="text-gray-600">This is who this portfolio webapp is for</p>
+            </div>
+        </div>
     </div>
 {% endblock content %}
