@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>
+            {% block title %}
+                | Nischal
+            {% endblock title %}
+        </title>
+        <meta name="keywords" content="Nischal Chaudhary Portfolio developer">
+        <meta name="description"
+              content="Welcome to Portfolio of Nischal Chaudhary">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+                defer></script>
+    </head>
+    <body>
+        {% include 'base/nav.html' %}
+        <div class="container mx-auto px-6 py-6">
+            {% block content %}
+            {% endblock content %}
+        </div>
+        {% include 'base/footer.html' %}
+        <script src="" async defer></script>
+    </body>
+</html>
