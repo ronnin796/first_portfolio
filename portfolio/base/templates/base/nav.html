@@ -1,4 +1,5 @@
-<nav class="bg-gray-800 text-white shadow-md">
+<nav id="navbar"
+     class="bg-gray-800 text-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-2 flex justify-between items-center">
         <a href="{% url 'base:home' %}" class="text-2xl font-bold">Portfolio</a>
         <ul class="flex space-x-6">
@@ -6,13 +7,16 @@
                 <a href="#intro" class="hover:text-gray-400">Intro</a>
             </li>
             <li>
-                <a href="#education" class="hover:text-gray-400">Education</a>
+                <a href="{% url 'base:education' %}" class="hover:text-gray-400">Education</a>
             </li>
             <li>
                 <a href="#expertise" class="hover:text-gray-400">Expertise</a>
             </li>
             <li>
                 <a href="#" class="hover:text-gray-400">Blog</a>
+            </li>
+            <li>
+                <a href="#" class="hover:text-gray-400">Certifications</a>
             </li>
             <li>
                 <a href="#contact" class="hover:text-gray-400">Contact</a>
