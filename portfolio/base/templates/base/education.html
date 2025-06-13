@@ -4,22 +4,36 @@
     Education
 {% endblock title %}
 {% block content %}
-    <div class=" bg-gradient-to-r from-gray-800 via-gray-900 to-black max-w-4xl mx-auto py-10 px-4 bg-gray-700">
-        <h1 class="text-3xl font-semibold text-center mb-8 text-white">Education</h1>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {% for edu in education_list %}
-                <div class="bg-white bg-opacity-30 shadow-md rounded-lg p-6 hover:shadow-lg transform hover:scale-125 transition duration-300 ease-in-out hover:z-10">
-                    {% if edu.image %}
-                        <img src="{{ edu.image.url }}"
-                             alt="{{ edu.level }}"
-                             class="mx-auto mb-4 w-full h-48 object-contain rounded-t-lg">
-                    {% endif %}
-                    <h2 class="text-xl font-bold text-gray-900">{{ edu.level }}</h2>
-                    <p class="text-sm text-white">{{ edu.institution_name }}</p>
-                    <p class="text-xs text-gray-400 italic">{{ edu.start_date }} – {{ edu.end_date }}</p>
-                    {% if edu.description %}<p class="text-sm text-white mt-3">{{ edu.description }}</p>{% endif %}
+<div class="min-h-screen flex flex-col items-center py-10">
+    <h1 class="text-3xl font-semibold text-center mb-8 text-blue-400">Education</h1>
+    <a href="{% url 'base:home' %}" class="mb-8 bg-blue-900 text-blue-200 px-5 py-2 rounded hover:bg-blue-800 hover:shadow-blue-500/30 transition shadow">Back to Home</a>
+    <ol class="relative border-l-2 border-blue-900 max-w-2xl w-full mx-auto">
+        {% for edu in education_list %}
+        <li class="mb-10 ml-6">
+            <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-900 rounded-full -left-3 ring-4 ring-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0 0H6m6 0h6"/>
+                </svg>
+            </span>
+            <div class="bg-gray-900 bg-opacity-80 p-6 rounded-lg shadow-md border border-gray-800">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-blue-300 font-bold text-lg">{{ edu.level }}</span>
+                    <span class="inline-block bg-blue-900 text-blue-200 text-xs px-2 py-1 rounded">{{ edu.level|slice:":3" }}</span>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
+                <div class="text-gray-300 font-semibold">{{ edu.institution_name }}</div>
+                <div class="text-xs text-gray-400 italic mb-2">{{ edu.start_date }} – {{ edu.end_date }}</div>
+                {% if edu.description %}
+                    <div class="text-sm text-gray-300">{{ edu.description }}</div>
+                {% endif %}
+                {% if edu.image %}
+                    <div class="flex justify-center">
+                        <img src="{{ edu.image.url }}" alt="{{ edu.level }}"
+                             class="mt-4 w-72 h-44 object-contain bg-gray-800 rounded shadow border border-gray-700" />
+                    </div>
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
 {% endblock content %}

@@ -1,22 +1,46 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block content %}
-    <div class="bg-[url('{% static "base/images/background.jpg" %}')] bg-cover bg-center min-h-screen flex items-center justify-center">
-        <!-- Hover scale applied to a wrapper div instead of the entire card -->
-        <div class="transition duration-300 ease-in-out transform hover:scale-105 will-change-transform">
-            <div class="shadow-md rounded-lg max-w-md mx-auto text-center p-6 bg-white bg-opacity-80">
-                <div class="mb-4">
-                    <img src="{% static 'base/images/nisch.jpg' %}"
-                         alt="Nischal Chaudhary"
-                         class="w-32 h-32 rounded-full mx-auto object-cover">
-                </div>
-                <h1 class="text-2xl font-bold mb-2">Nischal Chaudhary</h1>
-                <p class="text-gray-600 text-sm mb-4">
-                    Hello, I'm Nischal Chaudhary. A passionate Jr. Developer with expertise in backend development and a growing knowledge of AI and ML. I specialize in creating RESTful APIs using Django Rest Framework. Always eager to learn and build efficient solutions. Let's collaborate to create something amazing!
-                </p>
-                <a href="#contact"
-                   class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Contact Me</a>
-            </div>
-        </div>
+<div class="min-h-screen flex flex-col items-center justify-center">
+    <img src="{% static 'base/images/nisch.jpg' %}" alt="Nischal Chaudhary"
+         class="w-28 h-28 rounded-full mb-6 border-4 border-blue-900 shadow-lg object-cover">
+    <h1 class="text-3xl font-bold mb-2 tracking-tight text-blue-400 drop-shadow-lg">Nischal Chaudhary</h1>
+    <div class="text-lg text-gray-400 mb-4 h-8">
+        <span id="typed-text" class="font-mono"></span>
     </div>
+    <p class="text-gray-400 max-w-xl text-center mb-6">
+        Backend Developer (Django, REST API) with a passion for building efficient solutions.<br>
+        Eager to learn and grow in the field of AI and ML.
+    </p>
+    {% include 'base/nav.html' %}
+</div>
+
+<script>
+    // Typing effect for "Aspiring AI/ML Engineer"
+    document.addEventListener('DOMContentLoaded', function() {
+        const text = "Aspiring AI/ML Engineer";
+        const el = document.getElementById('typed-text');
+        let i = 0, isDeleting = false, speed = 100;
+
+        function type() {
+            if (!isDeleting) {
+                el.textContent = text.slice(0, i++);
+                if (i > text.length) {
+                    isDeleting = true;
+                    setTimeout(type, 1200);
+                    return;
+                }
+            } else {
+                el.textContent = text.slice(0, --i);
+                if (i === 0) {
+                    isDeleting = false;
+                    setTimeout(type, 600);
+                    return;
+                }
+            }
+            setTimeout(type, isDeleting ? 50 : speed);
+        }
+        type();
+    });
+</script>
 {% endblock content %}

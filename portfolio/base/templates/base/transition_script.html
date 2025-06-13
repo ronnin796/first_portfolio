@@ -1,0 +1,21 @@
+<script>
+    document.querySelectorAll('a[href]').forEach(function(link) {
+        const href = link.getAttribute('href');
+        link.addEventListener('click', function(e) {
+            if (
+                href &&
+                !href.startsWith('#') &&
+                !link.hasAttribute('target') &&
+                !href.startsWith('mailto:') &&
+                !href.startsWith('http')
+            ) {
+                e.preventDefault();
+                document.getElementById('page-body').classList.remove('opacity-100');
+                document.getElementById('page-body').classList.add('opacity-0');
+                setTimeout(function() {
+                    window.location = href;
+                }, 250);
+            }
+        });
+    });
+</script>
